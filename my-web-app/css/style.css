@@ -1,0 +1,402 @@
+/* --- Новый современный стиль для всего сайта --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: #f4f6fb;
+  color: #232946;
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  margin-left: 270px;
+  padding: 40px 24px 24px 24px;
+  flex: 1;
+  min-height: 80vh;
+}
+
+header {
+  background: #fff;
+  padding: 32px 0 32px 0;
+  box-shadow: 0 2px 16px rgba(44, 62, 80, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #232946;
+}
+
+header img.logo {
+  position: absolute;
+  left: 40px;
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  border: 3px solid #a7a7e7;
+  background: #fff;
+  object-fit: cover;
+}
+
+footer {
+  background: #fff;
+  text-align: center;
+  padding: 28px 0 20px 0;
+  border-top: 1px solid #e6e6e6;
+  font-size: 1rem;
+  color: #a7a7a7;
+  margin-top: auto;
+  letter-spacing: 0.5px;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(180deg, #a7a7e7 0%, #e0c3fc 100%);
+  box-shadow: 2px 0 16px rgba(44,62,80,0.08);
+  padding: 60px 0 0 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.sidebar nav ul li {
+  margin: 18px 0;
+  width: 100%;
+}
+.sidebar nav ul li a {
+  display: block;
+  width: 100%;
+  padding: 14px 32px;
+  text-decoration: none;
+  color: #232946;
+  font-size: 1.15rem;
+  font-weight: 600;
+  border-radius: 0 30px 30px 0;
+  transition: background 0.2s, color 0.2s;
+}
+.sidebar nav ul li a:hover, .sidebar nav ul li a.active {
+  background: #fff;
+  color: #6247aa;
+}
+
+/* --- Cards --- */
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 900px;
+    margin: 40px auto 40px auto;
+    padding: 0 16px;
+}
+.card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(60, 90, 130, 0.10), 0 1.5px 4px rgba(60,90,130,0.06);
+    padding: 32px 28px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.2s;
+    position: relative;
+}
+
+.card:hover {
+    box-shadow: 0 8px 32px rgba(60, 90, 130, 0.18), 0 3px 8px rgba(60,90,130,0.10);
+}
+
+.card img {
+    width: 100%;
+    max-width: 380px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(60,90,130,0.08);
+}
+
+.card h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.5rem;
+    color: #2a3b5d;
+    font-weight: 600;
+    text-align: center;
+}
+
+.card p {
+    margin: 0 0 18px 0;
+    color: #4a5a6a;
+    text-align: center;
+    font-size: 1.08rem;
+}
+
+/* --- Comments --- */
+.comments {
+  margin: 0 24px 24px 24px;
+  background: #f4f6fb;
+  padding: 16px 16px 8px 16px;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+}
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+.comment-list li {
+    background: #eaf1fb;
+    border-radius: 7px;
+    padding: 7px 12px;
+    margin-bottom: 7px;
+    color: #2a3b5d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+.comment-input {
+  width: 70%;
+  padding: 7px 10px;
+  border: 1px solid #bcd0ee;
+  border-radius: 6px;
+  margin-right: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+.comment-input:focus {
+    border: 1.5px solid #5b8def;
+}
+
+/* --- Feedback (like/dislike) --- */
+.feedback {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: flex-end;
+}
+.like-button, .dislike-button {
+    background: #eaf6ed;
+    color: #3bb77e;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.like-button:hover {
+    background: #c6f5d6;
+    color: #1e7c4a;
+}
+.dislike-button {
+    background: #faeaea;
+    color: #e05a5a;
+}
+.dislike-button:hover {
+    background: #f7cccc;
+    color: #b82a2a;
+}
+
+/* --- Формы --- */
+input, textarea {
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+textarea {
+  border-radius: 8px;
+  border: 1.5px solid #a7a7e7;
+  padding: 12px;
+  font-size: 1rem;
+  background: #fff;
+}
+
+/* --- Register/Login Form --- */
+.register-form, .auth-card {
+  max-width: 420px;
+  margin: 48px auto;
+  background: #fff;
+  padding: 36px 32px 28px 32px;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(98,71,170,0.10);
+  transition: box-shadow 0.2s;
+}
+.register-form input, .auth-card input {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1.5px solid #a7a7e7;
+  font-size: 1rem;
+  background: #f4f6fb;
+}
+.register-form input:focus, .auth-card input:focus {
+  border: 1.5px solid #6247aa;
+  outline: none;
+}
+#registerMessage, #loginMessage {
+  text-align: center;
+  color: #e74c3c;
+  font-size: 1rem;
+  min-height: 24px;
+  margin-top: 10px;
+}
+
+/* --- Мелкие элементы --- */
+h1, h2, h3, h4, h5 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+}
+p {
+  font-size: 1.08rem;
+  color: #232946;
+}
+
+/* --- Достижения --- */
+.achievements-section {
+    background: linear-gradient(120deg, #f8fafc 0%, #e0eafc 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(52,152,219,0.10);
+    max-width: 600px;
+    margin: 40px auto 32px auto;
+    padding: 32px 24px 24px 24px;
+    text-align: center;
+    transition: box-shadow 0.2s;
+}
+.achievements-section h2 {
+    color: #3498db;
+    margin-bottom: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.achievements-add {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+.achievement-input {
+    width: 70%;
+    padding: 10px 14px;
+    border: 1.5px solid #bcd0ee;
+    border-radius: 8px;
+    font-size: 1.08rem;
+    outline: none;
+    transition: border 0.2s;
+    background: #fafdff;
+}
+.achievement-input:focus {
+    border: 1.5px solid #3498db;
+}
+#add-achievement-btn.button {
+    background: linear-gradient(90deg, #3498db 0%, #6dd5fa 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0 22px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(52,152,219,0.08);
+}
+#add-achievement-btn.button:hover {
+    background: linear-gradient(90deg, #2980b9 0%, #48c6ef 100%);
+}
+.achievements-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.achievements-list li {
+    background: #eaf1fb;
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    color: #2a3b5d;
+    text-align: left;
+    font-size: 1.08rem;
+    box-shadow: 0 1px 4px rgba(52,152,219,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: fadeIn 0.5s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: none;}
+}
+
+/* --- Адаптив --- */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 100px;
+    padding: 40px 0 0 0;
+  }
+  main {
+    margin-left: 110px;
+    padding: 24px 8px 8px 8px;
+  }
+  .cards-container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+@media (max-width: 600px) {
+  .sidebar {
+    display: none;
+  }
+  main {
+    margin-left: 0;
+    padding: 12px 2vw 2vw 2vw;
+  }
+  header img.logo {
+    left: 12px;
+    width: 48px;
+    height: 48px;
+  }
+  .register-form, .auth-card {
+    padding: 16px 4vw 12px 4vw;
+  }
+  .cards-container {
+        padding: 0 4px;
+    }
+    .card {
+        padding: 16px 6px 12px 6px;
+    }
+    .card img {
+        max-width: 98vw;
+    }
+}
+
+.icon-large-blue {
+    font-size: 2rem;
+    color: #3498db;
+}

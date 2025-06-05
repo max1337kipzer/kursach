@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить комментарий</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Дополнительный шрифт для эффектной цитаты -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <style>
+        /* Дополнительные стили для страницы комментариев */
+        body {
+            background: linear-gradient(135deg, #f8f9fa, #e9f7f9);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .post-details {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .post-details img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .post-details h2 {
+            margin: 10px 0;
+            font-size: 1.8rem;
+            color: #3498db;
+        }
+        .post-details p {
+            font-size: 1rem;
+            color: #555;
+        }
+        /* Блок с цитатой */
+        .quote {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 15px;
+            font-family: 'Lobster', cursive;
+            font-size: 1.5rem;
+            color: #555;
+            background: #fff;
+            border-left: 4px solid #3498db;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .comment-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .comment-container textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+            min-height: 150px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .comment-container button {
+            background: #1DA1F2;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            display: block;
+            margin: 20px auto 0;
+        }
+        .comment-container button:hover {
+            background: #0d95e8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/"><img src="/images/logo.jpg" alt="Логотип" class="logo"></a>
+        <h1>Добавить комментарий</h1>
+    </header>
+    <main>
+        <div class="post-details" id="postDetails">
+            <!-- Здесь будет подставлено фото и описание поста -->
+        </div>
+        <!-- Добавляем блок с красивой цитатой, вдохновляющей к творчеству -->
+        <div class="quote">
+            "Каждый комментарий – это шаг к совершенству."
+        </div>
+        <div class="comment-container">
+            <form id="commentForm">
+                <textarea id="commentInput" placeholder="Введите ваш комментарий"></textarea>
+                <button type="submit">Отправить комментарий</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; Креативное портфолио</p>
+    </footer>
+    <script>
+        // Функция для получения параметров URL
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+        
+        // Пример данных для постов
+        const posts = {
+            "1": {
+                title: "пост 1",
+                description: "Краткое описание проекта 1. Современный дизайн и инновационные решения.",
+                image: "/images/project1.jpg"
+            },
+            "2": {
+                title: "пост 2",
+                description: "Краткое описание проекта 2. Индивидуальный подход и креативный мир.",
+                image: "/images/project2.jpg"
+            },
+            "3": {
+                title: "пост 3",
+                description: "Краткое описание проекта 3. Творческий подход, свежие идеи и оригинальность.",
+                image: "/images/project3.jpg"
+            }
+        };
+
+        // Получаем id поста из URL и отображаем информацию
+        const cardId = getQueryParameter('card');
+        const postDetails = document.getElementById('postDetails');
+        if (cardId && posts[cardId]) {
+            const post = posts[cardId];
+            postDetails.innerHTML = `
+                <img src="${post.image}" alt="Изображение ${post.title}">
+                <h2>${post.title}</h2>
+                <p>${post.description}</p>
+            `;
+        } else {
+            postDetails.innerHTML = '<p>Пост не найден.</p>';
+        }
+
+        // Обработка отправки комментария
+        document.getElementById('commentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const comment = document.getElementById('commentInput').value.trim();
+            if(comment) {
+                const cardId = getQueryParameter('card');
+                fetch('/api/comments', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ cardId, comment })
+                })
+                .then(res => res.json())
+                .then(data => {
+                  if (data.error) {
+                    alert(data.error);
+                  } else {
+                    window.location.href = '/';
+                  }
+                })
+                .catch(() => alert('Ошибка при отправке комментария'));
+            } else {
+                alert("Введите комментарий");
+            }
+        });
+    </script>
+</body>
+</html>
