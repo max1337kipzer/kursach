@@ -5,6 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новости</title>
     <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            background: #eef2f7;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 24px 0 10px 0;
+            text-align: center;
+        }
+        .logo {
+            width: 60px;
+            border-radius: 50%;
+            margin-bottom: 8px;
+        }
+        h1 {
+            margin: 8px 0 18px 0;
+            font-size: 2.1em;
+            color: #2a3a4a;
+            letter-spacing: 1px;
+        }
+        nav {
+            margin-bottom: 10px;
+        }
+        .tabs {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+        }
+        .tabs li {
+            display: inline;
+        }
+        .tabs a {
+            text-decoration: none;
+            color: #2a3a4a;
+            font-weight: 500;
+            padding: 8px 22px;
+            border-radius: 22px;
+            background: #f0f4fa;
+            transition: background 0.15s;
+        }
+        .tabs a.active, .tabs a:hover {
+            background: #dbeafe;
+            color: #1d3557;
+        }
+        main {
+            max-width: 700px;
+            margin: 36px auto 0 auto;
+            padding: 0 18px 32px 18px;
+        }
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            margin: 0;
+        }
+        .news-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 28px 26px 22px 26px;
+            border-left: 6px solid #60a5fa;
+        }
+        .news-title {
+            margin: 0 0 10px 0;
+            font-size: 1.35em;
+            color: #2563eb;
+        }
+        .news-date {
+            font-size: 0.97em;
+            color: #7b8794;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .news-content {
+            font-size: 1.09em;
+            color: #222e3a;
+        }
+        footer {
+            background: #fff;
+            text-align: center;
+            padding: 18px 0 12px 0;
+            color: #7b8794;
+            font-size: 1em;
+            margin-top: 40px;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.03);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,11 +106,47 @@
             <img src="/images/logo.jpg" alt="Логотип" class="logo">
         </a>
         <h1>Новости</h1>
+        <nav>
+            <ul class="tabs">
+                <li><a href="/friends.html">Друзья</a></li>
+                <li><a href="/notifications.html">Уведомления</a></li>
+                <li><a href="/news.html" class="active">Новости</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
-        <p>Здесь будут новости.</p>
+        <section class="news-list">
+            <article class="news-card">
+                <h2 class="news-title">Запущено новое портфолио!</h2>
+                <span class="news-date">12 июня 2024</span>
+                <div class="news-content">
+                    Мы рады сообщить о запуске обновлённого портфолио с современным дизайном и новыми возможностями для пользователей.
+                </div>
+                <!-- Пример кнопки "Комментировать" для поста с id=1 -->
+                <a href="/comment.html?card=1" class="comment-btn">Комментировать</a>
+            </article>
+            <article class="news-card">
+                <h2 class="news-title">Добавлены вкладки для удобства</h2>
+                <span class="news-date">10 июня 2024</span>
+                <div class="news-content">
+                    Теперь вы можете быстро переключаться между друзьями, уведомлениями, новостями и сообщениями благодаря новым вкладкам в верхнем меню.
+                </div>
+                <!-- Пример кнопки "Комментировать" для поста с id=2 -->
+                <a href="/comment.html?card=2" class="comment-btn">Комментировать</a>
+            </article>
+            <article class="news-card">
+                <h2 class="news-title">Обновление системы уведомлений</h2>
+                <span class="news-date">8 июня 2024</span>
+                <div class="news-content">
+                    Система уведомлений стала ещё удобнее — не пропустите важные события и сообщения!
+                </div>
+                <!-- Пример кнопки "Комментировать" для поста с id=3 -->
+                <a href="/comment.html?card=3" class="comment-btn">Комментировать</a>
+            </article>
+        </section>
     </main>
     <footer>
         <p>&copy; Креативное портфолио</p>
     </footer>
+</body>
 </html>

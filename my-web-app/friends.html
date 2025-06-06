@@ -5,18 +5,190 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Друзья</title>
     <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            background: #eef2f7;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 24px 0 10px 0;
+            text-align: center;
+        }
+        .logo {
+            width: 60px;
+            border-radius: 50%;
+            margin-bottom: 8px;
+        }
+        h1 {
+            margin: 8px 0 18px 0;
+            font-size: 2.1em;
+            color: #2a3a4a;
+            letter-spacing: 1px;
+        }
+        nav {
+            margin-bottom: 10px;
+        }
+        .tabs {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+        }
+        .tabs li {
+            display: inline;
+        }
+        .tabs a {
+            text-decoration: none;
+            color: #2a3a4a;
+            font-weight: 500;
+            padding: 8px 22px;
+            border-radius: 22px;
+            background: #f0f4fa;
+        }
+        .tabs a.active, .tabs a:hover {
+            background: #dbeafe;
+            color: #1d3557;
+        }
+        main {
+            max-width: 700px;
+            margin: 36px auto 0 auto;
+            padding: 0 18px 32px 18px;
+        }
+        .friends-list {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            margin: 0;
+        }
+        .friend-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            border-left: 6px solid #60a5fa;
+            position: relative;
+        }
+        .friend-card:nth-child(2n) {
+            border-left: 6px solid #f59e42;
+        }
+        .friend-card:nth-child(3n) {
+            border-left: 6px solid #34d399;
+        }
+        .friend-info {
+            flex: 1;
+        }
+        .friend-name {
+            font-size: 1.18em;
+            font-weight: 600;
+            color: #2563eb;
+            margin: 0 0 4px 0;
+            letter-spacing: 0.5px;
+        }
+        .friend-status {
+            font-size: 0.98em;
+            color: #7b8794;
+        }
+        .divider {
+            height: 1px;
+            background: #e5e7eb;
+            margin: 0 0 0 44px;
+            border: none;
+        }
+        footer {
+            background: #fff;
+            text-align: center;
+            padding: 18px 0 12px 0;
+            color: #7b8794;
+            font-size: 1em;
+            margin-top: 40px;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.03);
+        }
+    </style>
 </head>
 <body>
     <header>
-       <a href="/">
+        <a href="/">
             <img src="/images/logo.jpg" alt="Логотип" class="logo">
         </a>
         <h1>Друзья</h1>
+        <nav>
+            <ul class="tabs">
+                <li><a href="/friends.html" class="active">Друзья</a></li>
+                <li><a href="/notifications.html">Уведомления</a></li>
+                <li><a href="/news.html">Новости</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
-        <p>Здесь будет список друзей.</p>
+        <section class="friends-list">
+            <div class="friend-card">
+                <div class="friend-info">
+                    <div class="friend-name">Иван Петров</div>
+                    <div class="friend-status">Онлайн</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="friend-card">
+                <div class="friend-info">
+                    <div class="friend-name">Мария Иванова</div>
+                    <div class="friend-status">Был(а) в сети 2 часа назад</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="friend-card">
+                <div class="friend-info">
+                    <div class="friend-name">Алексей Смирнов</div>
+                    <div class="friend-status">Онлайн</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="friend-card">
+                <div class="friend-info">
+                    <div class="friend-name">Екатерина Сидорова</div>
+                    <div class="friend-status">Не в сети</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="friend-card">
+                <div class="friend-info">
+                    <div class="friend-name">Дмитрий Кузнецов</div>
+                    <div class="friend-status">Онлайн</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="friend-card">
+                <div class="friend-info">
+                    <div class="friend-name">Ольга Васильева</div>
+                    <div class="friend-status">Была в сети 10 минут назад</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="friend-card">
+                <div class="friend-info">
+                    <div class="friend-name">Сергей Морозов</div>
+                    <div class="friend-status">Не в сети</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="friend-card">
+                <div class="friend-info">
+                    <div class="friend-name">Анна Ковалёва</div>
+                    <div class="friend-status">Онлайн</div>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <p>&copy; Креативное портфолио</p>
     </footer>
+</body>
 </html>

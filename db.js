@@ -18,7 +18,6 @@ db.serialize(() => {
     )
   `);
 
-  // Создать пользователя admin, если его нет
   db.get(`SELECT * FROM users WHERE username = 'admin'`, (err, row) => {
     if (!row) {
       db.run(

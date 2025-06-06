@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Дополнительный шрифт для эффектной цитаты -->
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <style>
-        /* Дополнительные стили для страницы комментариев */
         body {
             background: linear-gradient(135deg, #f8f9fa, #e9f7f9);
             animation: fadeIn 1s ease-in-out;
@@ -44,7 +42,6 @@
             font-size: 1rem;
             color: #555;
         }
-        /* Блок с цитатой */
         .quote {
             max-width: 600px;
             margin: 20px auto;
@@ -101,9 +98,7 @@
     </header>
     <main>
         <div class="post-details" id="postDetails">
-            <!-- Здесь будет подставлено фото и описание поста -->
         </div>
-        <!-- Добавляем блок с красивой цитатой, вдохновляющей к творчеству -->
         <div class="quote">
             "Каждый комментарий – это шаг к совершенству."
         </div>
@@ -118,13 +113,10 @@
         <p>&copy; Креативное портфолио</p>
     </footer>
     <script>
-        // Функция для получения параметров URL
         function getQueryParameter(name) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
         }
-        
-        // Пример данных для постов
         const posts = {
             "1": {
                 title: "пост 1",
@@ -143,43 +135,46 @@
             }
         };
 
-        // Получаем id поста из URL и отображаем информацию
-        const cardId = getQueryParameter('card');
-        const postDetails = document.getElementById('postDetails');
-        if (cardId && posts[cardId]) {
-            const post = posts[cardId];
-            postDetails.innerHTML = `
-                <img src="${post.image}" alt="Изображение ${post.title}">
-                <h2>${post.title}</h2>
-                <p>${post.description}</p>
-            `;
-        } else {
-            postDetails.innerHTML = '<p>Пост не найден.</p>';
-        }
-
-        // Обработка отправки комментария
-        document.getElementById('commentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const comment = document.getElementById('commentInput').value.trim();
-            if(comment) {
-                const cardId = getQueryParameter('card');
-                fetch('/api/comments', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ cardId, comment })
-                })
-                .then(res => res.json())
-                .then(data => {
-                  if (data.error) {
-                    alert(data.error);
-                  } else {
-                    window.location.href = '/';
-                  }
-                })
-                .catch(() => alert('Ошибка при отправке комментария'));
+        document.addEventListener('DOMContentLoaded', function() {
+            const cardId = getQueryParameter('card');
+            const postDetails = document.getElementById('postDetails');
+            if (cardId && posts[cardId]) {
+                const post = posts[cardId];
+                postDetails.innerHTML = `
+                    <img src="${post.image}" alt="Изображение ${post.title}">
+                    <h2>${post.title}</h2>
+                    <p>${post.description}</p>
+                `;
             } else {
-                alert("Введите комментарий");
+                postDetails.innerHTML = '<p>Пост не найден.</p>';
             }
+            const commentFromUrl = getQueryParameter('comment');
+            if (commentFromUrl) {
+                document.getElementById('commentInput').value = commentFromUrl;
+            }
+            document.getElementById('commentForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const comment = document.getElementById('commentInput').value.trim();
+                if(comment) {
+                    const cardId = getQueryParameter('card');
+                    fetch('/api/comments', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ cardId, comment })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                      if (data.error) {
+                        alert(data.error);
+                      } else {
+                        window.location.href = '/';
+                      }
+                    })
+                    .catch(() => alert('Ошибка при отправке комментария'));
+                } else {
+                    alert("Введите комментарий");
+                }
+            });
         });
     </script>
 </body>

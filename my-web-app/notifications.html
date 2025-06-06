@@ -1,22 +1,172 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Уведомления</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <header>
-        <a href="/">
-            <img src="/images/logo.jpg" alt="Логотип" class="logo">
-        </a>
-        <h1>Уведомления</h1>
-    </header>
-    <main>
-        <p>Здесь будут уведомления.</p>
-    </main>
-    <footer>
-        <p>&copy; Креативное портфолио</p>
-    </footer>
-</html>
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Уведомления</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <style>
+            body {
+                background: #eef2f7;
+                font-family: 'Segoe UI', Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            header {
+                background: #fff;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+                padding: 24px 0 10px 0;
+                text-align: center;
+            }
+            .logo {
+                width: 60px;
+                border-radius: 50%;
+                margin-bottom: 8px;
+            }
+            h1 {
+                margin: 8px 0 18px 0;
+                font-size: 2.1em;
+                color: #2a3a4a;
+                letter-spacing: 1px;
+            }
+            nav {
+                margin-bottom: 10px;
+            }
+            .tabs {
+                list-style: none;
+                padding: 0;
+                margin: 0 auto;
+                display: flex;
+                justify-content: center;
+                gap: 18px;
+            }
+            .tabs li {
+                display: inline;
+            }
+            .tabs a {
+                text-decoration: none;
+                color: #2a3a4a;
+                font-weight: 500;
+                padding: 8px 22px;
+                border-radius: 22px;
+                background: #f0f4fa;
+            }
+            .tabs a.active, .tabs a:hover {
+                background: #dbeafe;
+                color: #1d3557;
+            }
+            main {
+                max-width: 700px;
+                margin: 36px auto 0 auto;
+                padding: 0 18px 32px 18px;
+            }
+            .notifications-list {
+                display: flex;
+                flex-direction: column;
+                gap: 22px;
+                margin: 0;
+            }
+            .notification-card {
+                background: #fff;
+                border-radius: 14px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+                padding: 18px 22px;
+                display: flex;
+                align-items: flex-start;
+                gap: 18px;
+                border-left: 6px solid #60a5fa;
+                position: relative;
+            }
+            .notification-card:nth-child(2n) {
+                border-left: 6px solid #f59e42;
+            }
+            .notification-card:nth-child(3n) {
+                border-left: 6px solid #34d399;
+            }
+            .notification-content {
+                flex: 1;
+            }
+            .notification-title {
+                font-size: 1.13em;
+                font-weight: 600;
+                color: #2563eb;
+                margin: 0 0 4px 0;
+                letter-spacing: 0.5px;
+            }
+            .notification-time {
+                font-size: 0.97em;
+                color: #7b8794;
+                margin-bottom: 6px;
+                display: block;
+            }
+            .divider {
+                height: 1px;
+                background: #e5e7eb;
+                margin: 0 0 0 0;
+                border: none;
+            }
+            footer {
+                background: #fff;
+                text-align: center;
+                padding: 18px 0 12px 0;
+                color: #7b8794;
+                font-size: 1em;
+                margin-top: 40px;
+                box-shadow: 0 -2px 8px rgba(0,0,0,0.03);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="/">
+                <img src="/images/logo.jpg" alt="Логотип" class="logo">
+            </a>
+            <h1>Уведомления</h1>
+            <nav>
+                <ul class="tabs">
+                    <li><a href="/friends.html">Друзья</a></li>
+                    <li><a href="/notifications.html" class="active">Уведомления</a></li>
+                    <li><a href="/news.html">Новости</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="notifications-list">
+                <div class="notification-card">
+                    <div class="notification-content">
+                        <div class="notification-title">Новое сообщение от Марии Ивановой</div>
+                        <span class="notification-time">Сегодня, 12:30</span>
+                        <div>Привет! Не забудь про встречу в 15:00.</div>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="notification-card">
+                    <div class="notification-content">
+                        <div class="notification-title">Обновление профиля</div>
+                        <span class="notification-time">Вчера, 18:10</span>
+                        <div>Ваш профиль был успешно обновлён.</div>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="notification-card">
+                    <div class="notification-content">
+                        <div class="notification-title">Новый друг: Алексей Смирнов</div>
+                        <span class="notification-time">Вчера, 14:22</span>
+                        <div>Алексей Смирнов добавил вас в друзья.</div>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="notification-card">
+                    <div class="notification-content">
+                        <div class="notification-title">Системное уведомление</div>
+                        <span class="notification-time">10 июня, 09:00</span>
+                        <div>Плановое обновление сервиса завершено успешно.</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; Креативное портфолио</p>
+        </footer>
+    </body>
+    </html>

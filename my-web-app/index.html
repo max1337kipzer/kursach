@@ -12,7 +12,6 @@
             <ul>
                 <li><a href="/friends.html">Друзья</a></li>
                 <li><a href="/news.html">Новости</a></li>
-                <li><a href="/messages.html">Сообщения</a></li>
                 <li><a href="/notifications.html">Уведомления</a></li>
                 <li><a href="register.html">Вход / Регистрация</a></li>
             </ul>
@@ -147,7 +146,6 @@
                 </div>
             </div>
         </div>
-        <!-- Блок достижений -->
         <section class="achievements-section">
             <h2>Мое портфолио</h2>
             <div class="achievements-add">
@@ -250,6 +248,17 @@
                       commentList.appendChild(li);
                     });
                   });
+            });
+
+            document.querySelectorAll('.card').forEach(function(card) {
+                const cardId = card.getAttribute('data-card');
+                const commentInput = card.querySelector('.comment-input');
+                const addCommentBtn = card.querySelector('.add-comment');
+
+                addCommentBtn.onclick = function() {
+                    // Просто переход на страницу комментария с передачей id и текста
+                    window.location.href = `/comment.html?card=${encodeURIComponent(cardId)}&comment=${encodeURIComponent(commentInput.value)}`;
+                };
             });
 
             // === Достижения ===
